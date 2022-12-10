@@ -32,15 +32,16 @@ my_ui <-
                     icon = icon("home")
                 ),
                 menuItem(
-                    text = "Density dependence"  |> i18n$t(), 
-                    tabName = "densdep_tab", 
-                    icon = icon("list")
-                ),
-                menuItem(
                     text = "Parameters" |> i18n$t(), 
                     tabName = "sp_modelling_tab", 
                     icon = icon("sliders-h")
                 ),
+                menuItem(
+                    text = "Density dependence"  |> i18n$t(), 
+                    tabName = "densdep_tab", 
+                    icon = icon("list")
+                ),
+                
                 menuItem(
                     text = "More information" |> i18n$t(),
                     tabName = "home_tab",
@@ -65,9 +66,14 @@ my_ui <-
                         
                         box(width = 12,
                             title = "Surplus production models",
-                            div("Surplus production models assume that there is a biomass level (carrying capacity, K) that the stock cannot exceed. At low stock levels population growth rate is high, because there is little competition or cannibalism. As stock levels increase, the population growth rate slows down. When stock is at K level, the growth rate is 0, because the stock biomass cannot increase anymore." |> i18n$t()),
-                            br(),
-                            div("This is all very logical and intuitive, but the main question is - how quickly should this growth rate slow down? Should it slow down linearly, so that for each 10% increase in the biomass level, the growth rate decreases by 10%. Or perhaps initially the effect of density dependence is very small and the stock can grow very fast until it reaches some threshold level (say, 80% of K). Only then the growth rate starts decreasing rapidly. Assumptions about density depenence will have important consequences on the estimated sustainable fishing level."  |> i18n$t())
+                            # First paragraph
+                            div("Surplus production models assume that there is a biomass level (carrying capacity, K) that the stock cannot exceed. At low stock levels population growth rate is high, because there is little competition or cannibalism. At low biomass levels population growth rate is close to the maximum population growth rate, defined by the parameter r. As stock levels increase, the population growth rate slows down. When stock is at the level defined by K, population biomass does not increase anymore and growth rate is 0. Fishing removes some biomass, but population biomass increases due to its growth rate." |> i18n$t()),
+                            br(), # line break between paragraphs
+                            # Second paragraph
+                            div("Population resilience and sustainable harvesting rate depends on the growth rate r. The maximum sustainable yield (MSY) will also depend on the absolute population carrying capacity K. // In the next tab you can explore how population biomass and yield will change depending on the fishing mortality level under the most common assumption that maximum sustainable yield is achieved when population biomass is at 50% of its maximum or unfished level (K). This is the Schaefer model. Here the equilibrium fishing mortality which leads to MSY is half of population regeneration rate r. So you can play with different r and fishing mortality values and see how higher fishing mortality may lead to lower long-term yields and how similar yields can be achived at very different spawning stock biomass levels. Ideally we want to maximise both yields and the spawning stock biomass to make sure we have a healthy population."  |> i18n$t()),
+                            br(), 
+                            # Third paragraph
+                            div("In the next tab you can explore how population biomass and yield will change depending on the fishing mortality level under the most common assumption that maximum sustainable yield is achieved when population biomass is at 50% of its maximum or unfished level (K). This is the Schaefer model. Here the equilibrium fishing mortality which leads to MSY is half of population regeneration rate r. So you can play with different r and fishing mortality values and see how higher fishing mortality may lead to lower long-term yields and how similar yields can be achived at very different spawning stock biomass levels. Ideally we want to maximise both yields and the spawning stock biomass to make sure we have a healthy population."  |> i18n$t())
                         )
                     ),
                 ),
@@ -90,11 +96,11 @@ my_ui <-
                             width = 4,
                             box(
                                 width = 12,
-                                title = "Paramter selection" |> i18n$t(),
+                                title = "Parameter selection" |> i18n$t(),
                                 div(
-                                    title = "hover over me"  |> i18n$t(),
+                                    # title = "hover over me" |> i18n$t(),
                                     sliderInput(inputId = "densdep_k", 
-                                                label = "Param k",
+                                                label = "Carrying capacity (k)" |> i18n$t(),
                                                 min = 100,
                                                 max = 5000,
                                                 value = 1000,
@@ -102,9 +108,9 @@ my_ui <-
                                 ),
                                 
                                 div(
-                                    title = "hover over m2e"  |> i18n$t(),
+                                    # title = "hover over m2e"  |> i18n$t(),
                                     sliderInput("densdep_r", 
-                                                "param r",
+                                                "Growth rate (r)"|> i18n$t(),
                                                 min = 0.05, 
                                                 max = 1, 
                                                 value = 0.3, 
@@ -122,7 +128,7 @@ my_ui <-
                             width = 8,
                             title = "Visialisation",
                             div(
-                                title = "hover over me2",
+                                # title = "hover over me2",
                                 plotOutput("densdep_plot")
                             )
                         )
@@ -292,30 +298,29 @@ my_server <- function(input, output, session) {
             Cat2[i+1] = Bio2[i] * u_m2
         }
         
-        xlab1 <- "p_lab6"  |> i18n$t() %>% rlang::sym()
-        ylab1 <- "p_lab7"  |> i18n$t() %>% rlang::sym()
-        lab1 <- "p_lab8"  |> i18n$t() %>% rlang::sym()
-        
-        f1 <- "#1"  |> i18n$t() %>% rlang::sym() %>% as.character()
-        f2 <- "#2"  |> i18n$t() %>% rlang::sym()%>% as.character()
-        
         hline = MQMF::getMSY(c(r,K,Binit=Binit, sigma=0.5), p=1.0)
         
         
         tab1 <-
             tibble(t = 1:length(Bio), 
-                   biomass = Bio, 
-                   catch = Cat, 
-                   f_mortality = paste0(f1," (", u_m1, ")")) %>% 
+                   biomass = Bio |> as.numeric(), 
+                   catch = Cat  |> as.numeric(), 
+                   f_mortality_biomass = paste0("Biomass (#1: " |> i18n$t(), u_m1, ")"),
+                   f_mortality_yield = paste0("Yield (#1: " |> i18n$t(), u_m1, ")")) %>% 
             bind_rows(tibble(t = 1:length(Bio2), 
-                             biomass = Bio2, 
-                             catch = Cat2, 
-                             f_mortality = paste0(f2," (", u_m2, ")"))) 
+                             biomass = Bio2 |> as.numeric(), 
+                             catch = Cat2 |> as.numeric(), 
+                             f_mortality_biomass = paste0("Biomass (#2: " |> i18n$t(), u_m1, ")"),
+                             f_mortality_yield = paste0("Yield (#2: " |> i18n$t(), u_m1, ")"))) 
         
         tab1 |>
             plot_ly(x = ~t, 
                     y = ~biomass) |> 
-            add_lines(linetype = ~f_mortality) |> 
+            add_lines(linetype = ~f_mortality_biomass, 
+                      mode = "lines") |> 
+            add_lines(y = ~catch, 
+                      linetype =  ~f_mortality_yield,
+                      mode = "lines") |> 
             layout(title = '', 
                    plot_bgcolor = "transparent", 
                    xaxis = list(title = 'Time (years)' |> i18n$t(), hoverformat = '1f'), 
@@ -327,8 +332,8 @@ my_server <- function(input, output, session) {
         #     ggplot(aes(x = t |> as.numeric(), 
         #                y = biomass |> as.numeric(),
         #                col = f_mortality|> as.factor())) +
-        #     geom_line(size = 1.5) +
-        #     geom_line(aes(y = catch), lty = 2, size = 1.5) +
+        #     geom_line(linewidth = 1.5) +
+        #     geom_line(aes(y = catch), lty = 2, linewidth = 1.5) +
         #     ylim(0, K) +
         #     xlab(xlab1) +
         #     ylab(ylab1) +
@@ -370,28 +375,28 @@ my_server <- function(input, output, session) {
         sp <- prodfun(r,Bt,K,1.0)  # Schaefer equivalent  
         sp0 <- prodfun(r,Bt,K,p=1e-08)  # Fox equivalent  
         
-        mod1 <- "p_lab21"  |> i18n$t() %>% rlang::sym() %>% as.character()
-        mod2 <- "p_lab22"  |> i18n$t() %>% rlang::sym()%>% as.character()
-        lab1 <- "p_lab23"  |> i18n$t() %>% rlang::sym() %>% as.character()
-        lab2 <- "p_lab24"  |> i18n$t() %>% rlang::sym()%>% as.character()
+        mycols <- c("#1B9E77", "#D95F02")
+        names(mycols) <- c("Fox" |> i18n$t(), 
+                           "Schaefer" |> i18n$t())
         
-        mycols <- c("blue", "pink")
-        names(mycols) <- c(mod1, mod2)
+        transmod <- "Model" %>% rlang::sym() %>% as.character()
         
-        transmod <- "col1" %>% rlang::sym() %>% as.character()
-        
-        tibble(Bt, sp = sp0 * (max(sp)/max(sp0)), Model = mod1) %>% 
-            bind_rows(tibble(Bt, sp, Model = mod2)) %>% 
+        tibble(Bt, 
+               sp = sp0 * (max(sp)/max(sp0)), 
+               Model = "Fox"  |> i18n$t()) %>% 
+            bind_rows(tibble(Bt, 
+                             sp, 
+                             Model = "Schaefer" |> i18n$t())) %>% 
             rename(!!transmod := Model) %>% 
             ggplot(aes(x = Bt, 
                        y = sp)) + 
             aes_string(colour = as.character(transmod)) +
-            geom_line(size = 2) +
+            geom_line(linewidth = 2) +
             theme_bw(24) +
             # xlim(0, 3000) +
             # ylim(0, 800) +
-            ylab(lab1) +
-            xlab(lab2) +
+            ylab("Yield (tonnes)" |> i18n$t()) +
+            xlab("Stock biomass (tonnes)" |> i18n$t()) +
             theme(
                 legend.position = c(.95, .95),
                 legend.justification = c("right", "top"),
@@ -401,8 +406,8 @@ my_server <- function(input, output, session) {
                 plot.title = element_text(hjust = 0.5)
             ) +
             scale_colour_manual(values = mycols) +
-            geom_vline(xintercept = Bt[which.max(sp0)], lty = 2, size = 1, col = "blue") +
-            geom_vline(xintercept = Bt[which.max(sp)], lty = 2, size = 1, col = "pink")
+            geom_vline(xintercept = Bt[which.max(sp0)], lty = 2, linewidth = 1, col = mycols[1]) +
+            geom_vline(xintercept = Bt[which.max(sp)], lty = 2, linewidth = 1, col = mycols[2])
         
         
     })
@@ -427,18 +432,15 @@ my_server <- function(input, output, session) {
         sp0 <- prodfun(r,Bt,K,p=1e-08)  # Fox equivalent
         
         
-        tlab1 <- "tab_lab1"  |> i18n$t() %>% rlang::sym() %>% as.character()
-        tlab2 <- "tab_lab2"  |> i18n$t() %>% rlang::sym()%>% as.character()
-        tlab3 <- "tab_lab3"  |> i18n$t() %>% rlang::sym() %>% as.character()
-        tlab4 <- "tab_lab4"  |> i18n$t() %>% rlang::sym()%>% as.character()
-        tlab5 <- "tab_lab5"  |> i18n$t() %>% rlang::sym()%>% as.character()
+        tlab3 <- "Fox"  |> i18n$t() %>% rlang::sym() %>% as.character()
+        tlab4 <- "Schaefer"  |> i18n$t() %>% rlang::sym() %>% as.character()
         
-        tibble(" " = c(tlab1, 
-                       tlab5, 
-                       tlab2),
+        tibble(" " = c("Carrying capacity (k)" |> i18n$t(), 
+                       "MSY proportion of k" |> i18n$t(), 
+                       "Maximum sustainable yield (MSY)" |> i18n$t()),
                !!tlab3 := c(input$densdep_k, 
                             Bt[which.max(sp0)]/K, 
-                            Bt[which.max(sp0)]), #for Pella model
+                            Bt[which.max(sp0)]), #for Fox model
                !!tlab4 :=  c(input$densdep_k, 
                              Bt[which.max(sp)]/K, 
                              Bt[which.max(sp)]) #for Schaefer model
