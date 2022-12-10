@@ -5,66 +5,69 @@ library(tidyverse)
 library(MQMF)
 library(shinyBS)
 library(plotly)
+library(shiny.i18n)
 # devtools::install_github("https://github.com/haddonm/MQMF")
+
+i18n <- Translator$new(translation_json_path = "translation.json")
+i18n$set_translation_language("en")
 
 
 # User interface (UI) ----------------------------------------------------------
 my_ui <-
     dashboardPage(
-        title = "Surplus Production",
         header = dashboardHeader(
+            usei18n(i18n),
             title = dashboardBrand(
-                title = "Surplus Production",
+                title = "Surplus Production" |> i18n$t(),
                 color = "primary",
                 image = "https://avatars.githubusercontent.com/u/99745785?s=400&u=eeb3a46b56826f1511e2c387374759c4c5fd109e&v=4"
             )
         ),
         sidebar = dashboardSidebar(
+            usei18n(i18n),
             sidebarMenu(
                 menuItem(
-                    text = "About SPMs", 
+                    text = "About SPMs"  |> i18n$t(), 
                     tabName = "aboutspms_tab", 
                     icon = icon("home")
                 ),
                 menuItem(
-                    text = "Density dependence", 
+                    text = "Density dependence"  |> i18n$t(), 
                     tabName = "densdep_tab", 
                     icon = icon("list")
                 ),
                 menuItem(
-                    text = "Parameters", 
+                    text = "Parameters" |> i18n$t(), 
                     tabName = "sp_modelling_tab", 
                     icon = icon("sliders-h")
                 ),
                 menuItem(
-                    text = "More information",
+                    text = "More information" |> i18n$t(),
                     tabName = "home_tab",
                     icon = icon("info-circle")
-                )
+                ),
+                br(),
+                selectInput("lang_select", 
+                            label = NULL, 
+                            choices = list("English" = "en", 
+                                           "Lietuvių" = "lt"), 
+                            selected = "en")
             )
         ),
         body = dashboardBody(
+            usei18n(i18n),
             tabItems(
                 
                 ## About surplus production ------------------------------------
                 tabItem(
                     tabName = "aboutspms_tab",
                     fluidRow(
+                        
                         box(width = 12,
                             title = "Surplus production models",
-                            div("Surplus production models assume that there is a biomass level (carrying capacity, K)
-                                        that the stock cannot exceed. At low stock levels population growth rate is high,
-                                        because there is little competition or cannibalism. As stock levels increase, the 
-                                        population growth rate slows down. When stock is at K level, the growth rate is 0, 
-                                        because the stock biomass cannot increase anymore."),
+                            div("Surplus production models assume that there is a biomass level (carrying capacity, K) that the stock cannot exceed. At low stock levels population growth rate is high, because there is little competition or cannibalism. As stock levels increase, the population growth rate slows down. When stock is at K level, the growth rate is 0, because the stock biomass cannot increase anymore." |> i18n$t()),
                             br(),
-                            div("This is all very logical and intuitive, but the main question is - how quickly should 
-                                        this growth rate slow down? Should it slow down linearly, so that for each 10% increase 
-                                        in the biomass level, the growth rate decreases by 10%. Or perhaps initially the effect 
-                                    of density dependence is very small and the stock can grow very fast until it reaches some 
-                                    threshold level (say, 80% of K). Only then the growth rate starts decreasing rapidly. 
-                                    Assumptions about density depenence will have important consequences on the estimated 
-                                    sustainable fishing level.")
+                            div("This is all very logical and intuitive, but the main question is - how quickly should this growth rate slow down? Should it slow down linearly, so that for each 10% increase in the biomass level, the growth rate decreases by 10%. Or perhaps initially the effect of density dependence is very small and the stock can grow very fast until it reaches some threshold level (say, 80% of K). Only then the growth rate starts decreasing rapidly. Assumptions about density depenence will have important consequences on the estimated sustainable fishing level."  |> i18n$t())
                         )
                     ),
                 ),
@@ -76,18 +79,10 @@ my_ui <-
                     fluidRow(
                         box(width = 12,
                             title = "Density dependence",
-                            div("There are two main models that assume different density dependence assumptions. 
-                                    The basic one is Schaefer (1954, 1957), which assumes linear density dependence. 
-                                    Fox (1970) models assumes logarithmic density dependence, or in other words the 
-                                    decrease in r is logarithmically related to the increase in stock levels."),
+                            div("There are two main models that assume different density dependence assumptions. The basic one is Schaefer (1954, 1957), which assumes linear density dependence. Fox (1970) models assumes logarithmic density dependence, or in other words the decrease in r is logarithmically related to the increase in stock levels."  |> i18n$t()),
                             br(),
-                            div("This means that in the Schaefer assumes a symmetrical production curve, 
-                                    with the maximum surplus production and maximum sustainable yield (MSY) 
-                                    occurring at 50% of K. The Fox model assumes asymmetrical production curve 
-                                    with the maximum production at lower level of depletion or 37% of K. 
-                                    The Schaefer model therefore is more conservative than the Fox in that 
-                                    it requires the stock size to be higher for maximum production and 
-                                    generally leads to somewhat lower levels of catch.")
+                            div("This means that in the Schaefer assumes a symmetrical production curve, with the maximum surplus production and maximum sustainable yield (MSY) occurring at 50% of K. The Fox model assumes asymmetrical production curve with the maximum production at lower level of depletion or 37% of K. The Schaefer model therefore is more conservative than the Fox in that 
+                                    it requires the stock size to be higher for maximum production and generally leads to somewhat lower levels of catch."  |> i18n$t())
                         )
                     ),
                     fluidRow(
@@ -95,9 +90,9 @@ my_ui <-
                             width = 4,
                             box(
                                 width = 12,
-                                title = "Paramter selection",
+                                title = "Paramter selection" |> i18n$t(),
                                 div(
-                                    title = "hover over me",
+                                    title = "hover over me"  |> i18n$t(),
                                     sliderInput(inputId = "densdep_k", 
                                                 label = "Param k",
                                                 min = 100,
@@ -107,7 +102,7 @@ my_ui <-
                                 ),
                                 
                                 div(
-                                    title = "hover over m2e",
+                                    title = "hover over m2e"  |> i18n$t(),
                                     sliderInput("densdep_r", 
                                                 "param r",
                                                 min = 0.05, 
@@ -117,7 +112,7 @@ my_ui <-
                                 )
                             ),
                             box(
-                                title = "MSY outputs",
+                                title = "MSY outputs"  |> i18n$t(),
                                 width = 12,
                                 tableOutput("densdep_tab"), 
                                 align="center"
@@ -144,13 +139,13 @@ my_ui <-
                         column(
                             width = 4, 
                             box(
-                                title = "Parameter selection",
+                                title = "Parameter selection"  |> i18n$t(),
                                 uiOutput("all_spm_sliders"),
                                 width = 12
                             )
                         ),
                         column(width = 8, 
-                               box(title = "Spawning stock biomass (SSB) timeseries",
+                               box(title = "Spawning stock biomass (SSB) timeseries"  |> i18n$t(),
                                    plotlyOutput("spm_plot"),
                                    width = 12, 
                                    align="center")#,
@@ -168,9 +163,9 @@ my_ui <-
                 ## About page --------------------------------------------------
                 tabItem(
                     tabName = "home_tab",
-                    h3("Title of the homepage"),
-                    p("Info about the website goes here"),
-                    p("Para 2"),
+                    h3("Title of the homepage"  |> i18n$t()),
+                    p("Info about the website goes here"  |> i18n$t()),
+                    p("Para 2"  |> i18n$t()),
                     img(src='logos_english-removebg-preview.png', align = "center")
                     
                 )
@@ -182,6 +177,10 @@ my_ui <-
 # Server -----------------------------------------------------------------------
 my_server <- function(input, output, session) {
     
+    
+    observeEvent(input$lang_select,{
+        update_lang(session, input$lang_select)
+    })
     
     set.seed(122)
     histdata <- rnorm(500)
@@ -199,7 +198,7 @@ my_server <- function(input, output, session) {
         
         list(
             tags$div(
-                title = "Carrying Capacity is the maximum biomass the system can hold.",
+                title = "Carrying Capacity is the maximum biomass the system can hold."  |> i18n$t(),
                 sliderInput(
                     inputId = "spm_slider_k",
                     label = "Carrying capacity (K):",
@@ -211,7 +210,7 @@ my_server <- function(input, output, session) {
             ),
             
             tags$div(
-                title = "'r' refers to the intrinsic growth rate of the species.",
+                title = "'r' refers to the intrinsic growth rate of the species."  |> i18n$t(),
                 sliderInput("spm_slider_r",
                             "Growth rate (r):",
                             min = 0.05,
@@ -221,14 +220,14 @@ my_server <- function(input, output, session) {
             ),
             
             tags$div(
-                title = "The biomass when time = zero",
+                title = "The biomass when time = zero"  |> i18n$t(),
                 uiOutput("spm_binit_slider"),
             ),
             
             tags$div(
-                title = "The fishing mortality (F) for the first scenario.",
+                title = "The fishing mortality (F) for the first scenario."  |> i18n$t(),
                 sliderInput("spm_slider_m1",
-                            "Proportion fished (Scenario 1):",
+                            "Proportion fished (Scenario 1):" |> i18n$t(),
                             min = 0.0, 
                             max = 1, 
                             value = 0.1, 
@@ -236,9 +235,9 @@ my_server <- function(input, output, session) {
             ),
             
             tags$div(
-                title = "The fishing mortality (F) for the second scenario.",
+                title = "The fishing mortality (F) for the second scenario."  |> i18n$t(),
                 sliderInput("spm_slider_m2",
-                            "Proportion fished (Scenario 2):",
+                            "Proportion fished (Scenario 2):" |> i18n$t(),
                             min = 0.0, 
                             max = 1, 
                             value = 0.2, 
@@ -250,17 +249,13 @@ my_server <- function(input, output, session) {
     
     output$spm_binit_slider <- renderUI({
         shinyBS::popify(sliderInput("spm_slider_binit",
-                                    "Initial stock biomass (B\u2080):",
+                                    "Initial stock biomass (B\u2080):" |> i18n$t(),
                                     min = input$spm_slider_k*0.05,
                                     max = input$spm_slider_k,
                                     value = input$spm_slider_k*0.5,
                                     step = 10),
-                        "Initial Biomass (B0)",
-                        "How far the population was from carrying capacity when we started our surveys and analsyes. 
-                        If surveys are started at the same time as start of fishing, set Binit to K, indicating that 
-                        population was at carrying capacity and was not fished before (or at least not fished enough 
-                        to have much effect on it). Remember, this is the value of exploitable biomass,not all biomass 
-                        of the stock (we do not know much about juveniles and their abundance)")
+                        "Initial Biomass (B0)" |> i18n$t(),
+                        "How far the population was from carrying capacity when we started our surveys and analsyes. If surveys are started at the same time as start of fishing, set Binit to K, indicating that population was at carrying capacity and was not fished before (or at least not fished enough to have much effect on it). Remember, this is the value of exploitable biomass,not all biomass of the stock (we do not know much about juveniles and their abundance)"  |> i18n$t())
     })
     
     
@@ -297,12 +292,12 @@ my_server <- function(input, output, session) {
             Cat2[i+1] = Bio2[i] * u_m2
         }
         
-        xlab1 <- "p_lab6" %>% rlang::sym()
-        ylab1 <- "p_lab7" %>% rlang::sym()
-        lab1 <- "p_lab8" %>% rlang::sym()
+        xlab1 <- "p_lab6"  |> i18n$t() %>% rlang::sym()
+        ylab1 <- "p_lab7"  |> i18n$t() %>% rlang::sym()
+        lab1 <- "p_lab8"  |> i18n$t() %>% rlang::sym()
         
-        f1 <- "#1" %>% rlang::sym() %>% as.character()
-        f2 <- "#2" %>% rlang::sym()%>% as.character()
+        f1 <- "#1"  |> i18n$t() %>% rlang::sym() %>% as.character()
+        f2 <- "#2"  |> i18n$t() %>% rlang::sym()%>% as.character()
         
         hline = MQMF::getMSY(c(r,K,Binit=Binit, sigma=0.5), p=1.0)
         
@@ -323,9 +318,9 @@ my_server <- function(input, output, session) {
             add_lines(linetype = ~f_mortality) |> 
             layout(title = '', 
                    plot_bgcolor = "transparent", 
-                   xaxis = list(title = 'Time (years)', hoverformat = '1f'), 
-                   yaxis = list(title = 'Biomass (Tonnes)', hoverformat = '.1f'), 
-                   legend = list(title=list(text='Scenario')))
+                   xaxis = list(title = 'Time (years)' |> i18n$t(), hoverformat = '1f'), 
+                   yaxis = list(title = 'Biomass (Tonnes)'  |> i18n$t(), hoverformat = '.1f'), 
+                   legend = list(title=list(text='Scenario'  |> i18n$t())))
         
         # 
         # tab1 |> 
@@ -375,10 +370,10 @@ my_server <- function(input, output, session) {
         sp <- prodfun(r,Bt,K,1.0)  # Schaefer equivalent  
         sp0 <- prodfun(r,Bt,K,p=1e-08)  # Fox equivalent  
         
-        mod1 <- "p_lab21" %>% rlang::sym() %>% as.character()
-        mod2 <- "p_lab22" %>% rlang::sym()%>% as.character()
-        lab1 <- "p_lab23" %>% rlang::sym() %>% as.character()
-        lab2 <- "p_lab24" %>% rlang::sym()%>% as.character()
+        mod1 <- "p_lab21"  |> i18n$t() %>% rlang::sym() %>% as.character()
+        mod2 <- "p_lab22"  |> i18n$t() %>% rlang::sym()%>% as.character()
+        lab1 <- "p_lab23"  |> i18n$t() %>% rlang::sym() %>% as.character()
+        lab2 <- "p_lab24"  |> i18n$t() %>% rlang::sym()%>% as.character()
         
         mycols <- c("blue", "pink")
         names(mycols) <- c(mod1, mod2)
@@ -432,11 +427,11 @@ my_server <- function(input, output, session) {
         sp0 <- prodfun(r,Bt,K,p=1e-08)  # Fox equivalent
         
         
-        tlab1 <- "tab_lab1" %>% rlang::sym() %>% as.character()
-        tlab2 <- "tab_lab2" %>% rlang::sym()%>% as.character()
-        tlab3 <- "tab_lab3" %>% rlang::sym() %>% as.character()
-        tlab4 <- "tab_lab4" %>% rlang::sym()%>% as.character()
-        tlab5 <- "tab_lab5" %>% rlang::sym()%>% as.character()
+        tlab1 <- "tab_lab1"  |> i18n$t() %>% rlang::sym() %>% as.character()
+        tlab2 <- "tab_lab2"  |> i18n$t() %>% rlang::sym()%>% as.character()
+        tlab3 <- "tab_lab3"  |> i18n$t() %>% rlang::sym() %>% as.character()
+        tlab4 <- "tab_lab4"  |> i18n$t() %>% rlang::sym()%>% as.character()
+        tlab5 <- "tab_lab5"  |> i18n$t() %>% rlang::sym()%>% as.character()
         
         tibble(" " = c(tlab1, 
                        tlab5, 

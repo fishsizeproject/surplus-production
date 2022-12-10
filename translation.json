@@ -1,0 +1,137 @@
+{
+  "cultural_date_format": "%d-%m-%Y",
+  "languages": ["en", "lt"],
+  "translation": [
+      {"en": "About SPMs", "lt": "About SPMs(LITH)"},
+      {
+        "en": "Surplus Production",
+        "lt": "lt:surp prod"
+      },
+      {
+        "en": "Parameters",
+        "lt": "lith params"
+      },
+      {
+        "en": "Surplus production models assume that there is a biomass level (carrying capacity, K) that the stock cannot exceed. At low stock levels population growth rate is high, because there is little competition or cannibalism. As stock levels increase, the population growth rate slows down. When stock is at K level, the growth rate is 0, because the stock biomass cannot increase anymore.",
+        "lt": "LITHLANG: xxx Surplus production models assume that there is a biomass level (carrying capacity, K) that the stock cannot exceed. At low stock levels population growth rate is high, because there is little competition or cannibalism. As stock levels increase, the population growth rate slows down. When stock is at K level, the growth rate is 0, because the stock biomass cannot increase anymore."
+      },
+      {
+        "en": "Carrying Capacity is the maximum biomass the system can hold.",
+        "lt": "LITH LANG Capacity is the maximum biomass the system can hold."
+      },
+            {
+        "en": "'r' refers to the intrinsic growth rate of the species.",
+        "lt": "lith params1"
+      },
+            {
+        "en": "The biomass when time = zero",
+        "lt": "lith params2"
+      },
+            {
+        "en": "The fishing mortality (F) for the first scenario.",
+        "lt": "lith params3"
+      },
+            {
+        "en": "The fishing mortality (F) for the second scenario.",
+        "lt": "lith params4"
+      },
+            {
+        "en": "How far the population was from carrying capacity when we started our surveys and analsyes. If surveys are started at the same time as start of fishing, set Binit to K, indicating that population was at carrying capacity and was not fished before (or at least not fished enough to have much effect on it). Remember, this is the value of exploitable biomass,not all biomass of the stock (we do not know much about juveniles and their abundance)",
+        "lt": "lith params"
+      },
+            {
+        "en": "p_lab6",
+        "lt": "lith params5"
+      },
+            {
+        "en": "p_lab7",
+        "lt": "lith params9"
+      },
+            {
+        "en": "p_lab9",
+        "lt": "lith params6"
+      },
+            {
+        "en": "#1",
+        "lt": "lith params7"
+      },
+            {
+        "en": "#2",
+        "lt": "lith params11"
+      },
+            {
+        "en": "Time (years)",
+        "lt": "lith params12"
+      },
+            {
+        "en": "Scenario",
+        "lt": "lith params123"
+      },
+            {
+        "en": "Biomass (Tonnes)",
+        "lt": "lith params55"
+      },
+            {
+        "en": "Initial stock biomass (B\u2080):",
+        "lt": "lith params44"
+      },
+      {
+        "en": "Proportion fished (Scenario 1):",
+        "lt": "lith params33"
+      },
+      {
+        "en": "Proportion fished (Scenario 2):",
+        "lt": "lith params77"
+      },
+      {
+        "en": "p_lab8",
+        "lt": "lith params88"
+      },
+      {
+        "en": "p_lab21",
+        "lt": "lith params99"
+      },
+      {
+        "en": "p_lab22",
+        "lt": "lith params00"
+      },
+      {
+        "en": "p_lab23",
+        "lt": "lith params00000"
+      },
+      {
+        "en": "p_lab24",
+        "lt": "lith params--"
+      },
+      {
+        "en": "tab_lab1",
+        "lt": "lith params888"
+      },
+      {
+        "en": "tab_lab2",
+        "lt": "lith params099"
+      },
+      {
+        "en": "tab_lab3",
+        "lt": "lith params777"
+      },
+      {
+        "en": "tab_lab4",
+        "lt": "lith params666"
+      },
+      {
+        "en": "tab_lab5",
+        "lt": "lith params6665"
+      },
+      {
+        "en": "Title of the homepage",
+        "lt": "Title of the homepage (in lith)"
+      }
+      
+      
+      
+      
+    ]
+}
+
+
