@@ -23,11 +23,21 @@
       },
       /* Third paragraph */
       {
-        "en": "In the next tab you can explore how population biomass and yield will change depending on the fishing mortality level under the most common assumption that maximum sustainable yield is achieved when population biomass is at 50% of its maximum or unfished level (K). This is the Schaefer model. In this model the equilibrium maximum fishing mortality which leads to MSY is equal to half of population regeneration rate r. You can play with different r and fishing mortality F values and see how higher fishing mortality may lead to lower long-term yields. Also explore how similar yields can be achived at very different stock biomass levels. Ideally we want to maximise both the yields and the spawning stock biomass, as this will lead to a more resilient population. Remember, maximum sustainble yield (MSY) is the MAXIMUM recommended yield and not the target yield. Due to many uncertainties and environemntal impacts the actual yield should be lower.",
+        "en": "In the next tab you can explore how population biomass and yield will change depending on the fishing mortality level under the most common assumption that maximum sustainable yield is achieved when population biomass is at 50% of its maximum or unfished level (K). This is the Schaefer model. In this model the equilibrium maximum fishing mortality which leads to MSY is equal to half of population regeneration rate r. You can play with different r and fishing mortality F values and see how higher fishing mortality may lead to lower long-term yields. Also explore how similar yields can be achived at very different stock biomass levels. Ideally we want to maximise both the yields and the spawning stock biomass, as this will lead to a more resilient population. Remember, maximum sustainble yield (MSY) is the MAXIMUM recommended yield and not the target yield. Due to many uncertainties and environmental impacts the actual yield should be lower.",
         "lt": "Sekančiame lange jūs galite įvertinti kaip populiacijos biomasė ir sugavimai keičiasi priklausomai nuo skirtingo žvejybos mirtingumo (F). Čia mes naudosime patį dažniausią Schaefer modelį, kuris laiko kad didžiausi tvarūs sugavimai yra gaunami kai populiacijos biomasė yra pusė didžiausios biomasės arba talpos (K). Pagal šį modelį tvarus didžiausias žvejybos mirtingumas kuris duos didžiausius tvarius sugavimus yra toks pat kaip ir pusė populiacijos augimo greičio r. Siūlome išbandyti skirtingas r ir dviejų modelių F reikšmes, ir pažiūrėti kaip didinant žvejybos mirtingumą, ilgalaikiai sugavimai gali mažėti. Taip pat pažiūrėkite kaip tokie patys sugavimai gali būti pasiekiami esant labai skirtingiems populiacjos biomasės lygiams. Mūsų tikslas yra pasiekti didžiausius tvarius sugavimus ir didžiausią populiacijos biomasę. Didesnė biomasė reiškia, kad populiacija bus atsparesnė aplinkos pokyčiams ar kitiems nenumatytiems veiksniams, kurių mūsų modelis negali įvertinti. Atsminkinte kad didžiausias tvarus sugavimas (MSY) yra rekomenduojamas DIDŽIAUSIAS sugavimas, o ne siektinas lygis. Geriausia jei realūs sugavimai būtų mažesni, nes reikia atsižvelgti į daugybę neapibrėžtų procesų ir aplinkos veiksių, kurių pridėtinės produkcijos modeliai neįvertinga."
       },
-      
-      
+      {
+        "en": "To see our other models",
+        "lt": "test lith"
+      },
+      {
+        "en": "click here",
+        "lt": "click here lith"
+      },
+      {
+        "en": "or to our project website",
+        "lt": "proj website here lith"
+      },
       {
         "en": "Carrying capacity is the maximum biomass the system can hold, or unfished biomass level.",
         "lt": "Populiacijos talpa yra didžiausia galima populiacijos biomasė, arba populiacijos biomasė be žvejybos."

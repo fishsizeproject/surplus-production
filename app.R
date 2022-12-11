@@ -67,21 +67,26 @@ my_ui <-
                         box(width = 12,
                             title = "Surplus production models",
                             # First paragraph
-                            div("Surplus production models assume that there is a biomass level (carrying capacity, K) that the stock cannot exceed. At low stock levels population growth rate is high, because there is little competition or cannibalism. At low biomass levels population growth rate is close to the maximum population growth rate, defined by the parameter r. As stock levels increase, the population growth rate slows down. When stock is at the level defined by K, population biomass does not increase anymore and growth rate is 0. Fishing removes some biomass, but population biomass increases due to its growth rate." |> i18n$t()),
+                            div("Surplus production models assume that there is a biomass level (carrying capacity, K) that the stock cannot exceed. At low stock levels population growth rate is high, because there is little competition or cannibalism. At low biomass levels population growth rate is close to the maximum population growth rate, defined by the parameter r. As stock levels increase, the population growth rate slows down. When stock is at the level defined by K, population biomass does not increase anymore and growth rate is 0. Fishing removes some biomass, but population biomass increases due to its growth rate."  |> i18n$t()),
                             br(), # line break between paragraphs
                             div(img(src = "elephant.jpg", 
-                                width = "50%"), 
+                                    width = "50%"), 
                                 align = "center"),
                             br(),
                             # Second paragraph
-                            div("Population resilience and sustainable harvesting rate depends on the growth rate r. The maximum sustainable yield (MSY) will also depend on the absolute population carrying capacity K. In the next tab you can explore how population biomass and yield will change depending on the fishing mortality level under the most common assumption that maximum sustainable yield is achieved when population biomass is at 50% of its maximum or unfished level (K). This is the Schaefer model. Here the equilibrium fishing mortality which leads to MSY is half of population regeneration rate r. So you can play with different r and fishing mortality values and see how higher fishing mortality may lead to lower long-term yields and how similar yields can be achived at very different spawning stock biomass levels. Ideally we want to maximise both yields and the spawning stock biomass to make sure we have a healthy population."  |> i18n$t()),
+                            div("Population resilience and sustainable harvesting rate depends on the growth rate r. The maximum sustainable yield (MSY) will also depend on the absolute population carrying capacity K."  |> i18n$t()),
                             br(), 
                             div(img(src = "elephant2.jpg", 
                                     width = "50%"), 
                                 align = "center"),
                             br(),
                             # Third paragraph
-                            div("In the next tab you can explore how population biomass and yield will change depending on the fishing mortality level under the most common assumption that maximum sustainable yield is achieved when population biomass is at 50% of its maximum or unfished level (K). This is the Schaefer model. Here the equilibrium fishing mortality which leads to MSY is half of population regeneration rate r. So you can play with different r and fishing mortality values and see how higher fishing mortality may lead to lower long-term yields and how similar yields can be achived at very different spawning stock biomass levels. Ideally we want to maximise both yields and the spawning stock biomass to make sure we have a healthy population."  |> i18n$t())
+                            div("In the next tab you can explore how population biomass and yield will change depending on the fishing mortality level under the most common assumption that maximum sustainable yield is achieved when population biomass is at 50% of its maximum or unfished level (K). This is the Schaefer model. In this model the equilibrium maximum fishing mortality which leads to MSY is equal to half of population regeneration rate r. You can play with different r and fishing mortality F values and see how higher fishing mortality may lead to lower long-term yields. Also explore how similar yields can be achived at very different stock biomass levels. Ideally we want to maximise both the yields and the spawning stock biomass, as this will lead to a more resilient population. Remember, maximum sustainble yield (MSY) is the MAXIMUM recommended yield and not the target yield. Due to many uncertainties and environmental impacts the actual yield should be lower."  |> i18n$t()),
+                            br(),
+                            div("To see our other models"|> i18n$t(), 
+                                a(href = "https://fishsizeproject.github.io/models/", "click here" |> i18n$t()),
+                                "or to our project website"|> i18n$t(),
+                                a(href = "https://sif.lt", "click here" |> i18n$t()))
                         )
                     ),
                 ),
@@ -108,7 +113,7 @@ my_ui <-
                                 div(
                                     # title = "hover over me" |> i18n$t(),
                                     sliderInput(inputId = "densdep_k", 
-                                                label = "Carrying capacity (k)" |> i18n$t(),
+                                                label = "Carrying capacity (K)" |> i18n$t(),
                                                 min = 100,
                                                 max = 5000,
                                                 value = 1000,
@@ -443,15 +448,18 @@ my_server <- function(input, output, session) {
         tlab3 <- "Fox"  |> i18n$t() %>% rlang::sym() %>% as.character()
         tlab4 <- "Schaefer"  |> i18n$t() %>% rlang::sym() %>% as.character()
         
-        tibble(" " = c("Carrying capacity (k)" |> i18n$t(), 
-                       "MSY proportion of k" |> i18n$t(), 
-                       "Maximum sustainable yield (MSY)" |> i18n$t()),
+        tibble(" " = c("Carrying capacity (K)" |> i18n$t(), 
+                       "MSY proportion of K" |> i18n$t(), 
+                       "Stock biomass to produce MSY" |> i18n$t(), 
+                       "Maximum sustainable yield (MSY)" |> i18n$t() ),
                !!tlab3 := c(input$densdep_k, 
                             Bt[which.max(sp0)]/K, 
-                            Bt[which.max(sp0)]), #for Fox model
+                            Bt[which.max(sp0)],
+                            max(sp0 * (max(sp)/max(sp0)))), #for Fox model
                !!tlab4 :=  c(input$densdep_k, 
-                             Bt[which.max(sp)]/K, 
-                             Bt[which.max(sp)]) #for Schaefer model
+                             Bt[which.max(sp)]/K,
+                             Bt[which.max(sp)], 
+                             max(sp)) #for Schaefer model
         )
         
     })
