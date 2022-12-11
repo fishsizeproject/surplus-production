@@ -69,9 +69,17 @@ my_ui <-
                             # First paragraph
                             div("Surplus production models assume that there is a biomass level (carrying capacity, K) that the stock cannot exceed. At low stock levels population growth rate is high, because there is little competition or cannibalism. At low biomass levels population growth rate is close to the maximum population growth rate, defined by the parameter r. As stock levels increase, the population growth rate slows down. When stock is at the level defined by K, population biomass does not increase anymore and growth rate is 0. Fishing removes some biomass, but population biomass increases due to its growth rate." |> i18n$t()),
                             br(), # line break between paragraphs
+                            div(img(src = "elephant.jpg", 
+                                width = "50%"), 
+                                align = "center"),
+                            br(),
                             # Second paragraph
-                            div("Population resilience and sustainable harvesting rate depends on the growth rate r. The maximum sustainable yield (MSY) will also depend on the absolute population carrying capacity K. // In the next tab you can explore how population biomass and yield will change depending on the fishing mortality level under the most common assumption that maximum sustainable yield is achieved when population biomass is at 50% of its maximum or unfished level (K). This is the Schaefer model. Here the equilibrium fishing mortality which leads to MSY is half of population regeneration rate r. So you can play with different r and fishing mortality values and see how higher fishing mortality may lead to lower long-term yields and how similar yields can be achived at very different spawning stock biomass levels. Ideally we want to maximise both yields and the spawning stock biomass to make sure we have a healthy population."  |> i18n$t()),
+                            div("Population resilience and sustainable harvesting rate depends on the growth rate r. The maximum sustainable yield (MSY) will also depend on the absolute population carrying capacity K. In the next tab you can explore how population biomass and yield will change depending on the fishing mortality level under the most common assumption that maximum sustainable yield is achieved when population biomass is at 50% of its maximum or unfished level (K). This is the Schaefer model. Here the equilibrium fishing mortality which leads to MSY is half of population regeneration rate r. So you can play with different r and fishing mortality values and see how higher fishing mortality may lead to lower long-term yields and how similar yields can be achived at very different spawning stock biomass levels. Ideally we want to maximise both yields and the spawning stock biomass to make sure we have a healthy population."  |> i18n$t()),
                             br(), 
+                            div(img(src = "elephant2.jpg", 
+                                    width = "50%"), 
+                                align = "center"),
+                            br(),
                             # Third paragraph
                             div("In the next tab you can explore how population biomass and yield will change depending on the fishing mortality level under the most common assumption that maximum sustainable yield is achieved when population biomass is at 50% of its maximum or unfished level (K). This is the Schaefer model. Here the equilibrium fishing mortality which leads to MSY is half of population regeneration rate r. So you can play with different r and fishing mortality values and see how higher fishing mortality may lead to lower long-term yields and how similar yields can be achived at very different spawning stock biomass levels. Ideally we want to maximise both yields and the spawning stock biomass to make sure we have a healthy population."  |> i18n$t())
                         )
@@ -114,7 +122,7 @@ my_ui <-
                                                 min = 0.05, 
                                                 max = 1, 
                                                 value = 0.3, 
-                                                step = 0.05),
+                                                step = 0.01),
                                 )
                             ),
                             box(
