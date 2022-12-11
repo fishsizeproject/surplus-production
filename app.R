@@ -222,7 +222,7 @@ my_server <- function(input, output, session) {
                             min = 0.05,
                             max = 0.95, 
                             value = 0.3, 
-                            step = 0.05)
+                            step = 0.01)
             ),
             
             tags$div(
@@ -237,7 +237,7 @@ my_server <- function(input, output, session) {
                             min = 0.0, 
                             max = 1, 
                             value = 0.1, 
-                            step = 0.05),
+                            step = 0.01),
             ),
             
             tags$div(
@@ -247,7 +247,7 @@ my_server <- function(input, output, session) {
                             min = 0.0, 
                             max = 1, 
                             value = 0.2, 
-                            step = 0.05)
+                            step = 0.01)
             )
         )
     })
