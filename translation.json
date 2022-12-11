@@ -14,26 +14,26 @@
       /* First paragraph */
       {
         "en": "Surplus production models assume that there is a biomass level (carrying capacity, K) that the stock cannot exceed. At low stock levels population growth rate is high, because there is little competition or cannibalism. At low biomass levels population growth rate is close to the maximum population growth rate, defined by the parameter r. As stock levels increase, the population growth rate slows down. When stock is at the level defined by K, population biomass does not increase anymore and growth rate is 0. Fishing removes some biomass, but population biomass increases due to its growth rate.",
-        "lt": "Viena iš produkcijos modelio prielaidų yra tai kad populiacja negali būti didesnė nei tam tikras dydis, nurodytas K parametru. Kuomet populiacijoje yra nedaug individų, jos augimo greitis yra aukštas, nes konkurencija ar kanibalizmas turi mažai įtakos. Didėjant populiacijos gausumui, jos augimo greitis mažėja. Kuomet populiacija pasiekia K gausumą, ji daugiau didėti nebegali."
+        "lt": "Viena iš produkcijos modelio prielaidų yra tai kad populiacjos biomasė negali viršyti biomasės talpos, nurodytos K parametre. Kuomet populiacijoje yra nedaug individų, populiacijos augimo greitis yra aukštas, nes konkurencija ar kanibalizmas turi mažai įtakos. Didėjant populiacijos gausumui, augimo greitis mažėja. Kuomet populiacija pasiekia K biomasę, ji daugiau didėti nebegali. Žvejybos pasekoje dalis biomasės yra išgaudoma, tuomet populiacijos biomasė sumažėja. Tačiau populiacija ir vėl gali pagausėti, o jos atsikūrimo greitis priklauso nuo populiacijos augimo parametero r."
       },
       /* Second paragraph */
       {
-        "en": "Population resilience and sustainable harvesting rate depends on the growth rate r. The maximum sustainable yield (MSY) will also depend on the absolute population carrying capacity K. // In the next tab you can explore how population biomass and yield will change depending on the fishing mortality level under the most common assumption that maximum sustainable yield is achieved when population biomass is at 50% of its maximum or unfished level (K). This is the Schaefer model. Here the equilibrium fishing mortality which leads to MSY is half of population regeneration rate r. So you can play with different r and fishing mortality values and see how higher fishing mortality may lead to lower long-term yields and how similar yields can be achived at very different spawning stock biomass levels. Ideally we want to maximise both yields and the spawning stock biomass to make sure we have a healthy population.",
-        "lt": "Žvejybos pasekoje dalis biomasės yra išgaudoma ir populiacijos biomasė sumažėja. Bet ji vėl gali atsikurti, o atsikūrimo greitis priklauso nuo populiacijos augimo parametero r. Didžiausias tvarus sugavimas taip pat priklauso nuo pačio populiacijos dydžio K. // Sekančiame lange jūs galite ..."
+        "en": "Population resilience and sustainable harvesting rate depends on the growth rate r. The maximum sustainable yield (MSY) will also depend on the absolute population carrying capacity K.",
+        "lt": "Žuvų populiacijos atsparumas išgaudymui ir tvarus žvejybinis mirtingumas daugiausia priklauso nuo populiacijos atsikūrimo greičio r. Absoliutus didžiausias tvarus sugavimas žinoma taip pat priklauso ir nuo populiacijos talpos, nurodyto parametru K."
       },
       /* Third paragraph */
       {
-        "en": "In the next tab you can explore how population biomass and yield will change depending on the fishing mortality level under the most common assumption that maximum sustainable yield is achieved when population biomass is at 50% of its maximum or unfished level (K). This is the Schaefer model. Here the equilibrium fishing mortality which leads to MSY is half of population regeneration rate r. So you can play with different r and fishing mortality values and see how higher fishing mortality may lead to lower long-term yields and how similar yields can be achived at very different spawning stock biomass levels. Ideally we want to maximise both yields and the spawning stock biomass to make sure we have a healthy population.",
-        "lt": "Sekančiame lange jūs galite ..."
+        "en": "In the next tab you can explore how population biomass and yield will change depending on the fishing mortality level under the most common assumption that maximum sustainable yield is achieved when population biomass is at 50% of its maximum or unfished level (K). This is the Schaefer model. In this model the equilibrium maximum fishing mortality which leads to MSY is equal to half of population regeneration rate r. You can play with different r and fishing mortality F values and see how higher fishing mortality may lead to lower long-term yields. Also explore how similar yields can be achived at very different stock biomass levels. Ideally we want to maximise both the yields and the spawning stock biomass, as this will lead to a more resilient population. Remember, maximum sustainble yield (MSY) is the MAXIMUM recommended yield and not the target yield. Due to many uncertainties and environemntal impacts the actual yield should be lower.",
+        "lt": "Sekančiame lange jūs galite įvertinti kaip populiacijos biomasė ir sugavimai keičiasi priklausomai nuo skirtingo žvejybos mirtingumo (F). Čia mes naudosime patį dažniausią Schaefer modelį, kuris laiko kad didžiausi tvarūs sugavimai yra gaunami kai populiacijos biomasė yra pusė didžiausios biomasės arba talpos (K). Pagal šį modelį tvarus didžiausias žvejybos mirtingumas kuris duos didžiausius tvarius sugavimus yra toks pat kaip ir pusė populiacijos augimo greičio r. Siūlome išbandyti skirtingas r ir dviejų modelių F reikšmes, ir pažiūrėti kaip didinant žvejybos mirtingumą, ilgalaikiai sugavimai gali mažėti. Taip pat pažiūrėkite kaip tokie patys sugavimai gali būti pasiekiami esant labai skirtingiems populiacjos biomasės lygiams. Mūsų tikslas yra pasiekti didžiausius tvarius sugavimus ir didžiausią populiacijos biomasę. Didesnė biomasė reiškia, kad populiacija bus atsparesnė aplinkos pokyčiams ar kitiems nenumatytiems veiksniams, kurių mūsų modelis negali įvertinti. Atsminkinte kad didžiausias tvarus sugavimas (MSY) yra rekomenduojamas DIDŽIAUSIAS sugavimas, o ne siektinas lygis. Geriausia jei realūs sugavimai būtų mažesni, nes reikia atsižvelgti į daugybę neapibrėžtų procesų ir aplinkos veiksių, kurių pridėtinės produkcijos modeliai neįvertinga."
       },
       
       
       {
-        "en": "Carrying Capacity is the maximum biomass the system can hold.",
-        "lt": "Populiacijos talpa yra didžiausia galima populiacijos biomasė."
+        "en": "Carrying capacity is the maximum biomass the system can hold, or unfished biomass level.",
+        "lt": "Populiacijos talpa yra didžiausia galima populiacijos biomasė, arba populiacijos biomasė be žvejybos."
       },
             {
-        "en": "'r' refers to the intrinsic maximum population growth rate",
+        "en": "r refers to the intrinsic maximum population growth rate",
         "lt": "r nurodo populiacijos didžiausią galimą augimo greitį"
       },
             {
@@ -54,51 +54,51 @@
       },
             {
         "en": "Time (years)",
-        "lt": "lith params12"
+        "lt": "Laikas (metai)"
       },
         {
         "en": "Yield (tonnes)",
-        "lt": "LITH yield (tonnes)"
+        "lt": "Sugavimai (tonos)"
       },
         {
         "en": "Stock biomass (tonnes)",
-        "lt": "lith SSB (tonnes)"
+        "lt": "Populiacijos biomasė (tonos)"
       },
             {
         "en": "Scenario",
-        "lt": "lith params123"
+        "lt": "Scenarius"
       },
           {
         "en": "Parameter selection",
-        "lt": "lith params12377"
+        "lt": "Parametrų pasirinkimas"
       },
             {
-        "en": "Biomass (Tonnes)",
-        "lt": "lith params55"
+        "en": "Biomass (tonnes)",
+        "lt": "Biomasė (tonos)"
       },
             {
         "en": "Initial stock biomass (B\u2080):",
-        "lt": "lith params44"
+        "lt": "Pradinė populiacijos biomasė (B\u2080)"
       },
       {
         "en": "Proportion fished (Scenario 1):",
-        "lt": "lith params33"
+        "lt": "Išgaudymo proporcija (Scenarijus 1)"
       },
       {
         "en": "Proportion fished (Scenario 2):",
-        "lt": "lith params77"
+        "lt": "Išgaudymo proporcija (Scenarijus 2)"
       },
       {
-        "en": "Carrying capacity (k)",
-        "lt": "lith params888"
+        "en": "Carrying capacity (K)",
+        "lt": "Populiacijos talpa (K)"
       },
       {
-        "en": "Growth rate (r)",
-        "lt": "lith params0101"
+        "en": "Population growth rate (r)",
+        "lt": "Populiacijos augimo greitis (r)"
       },
       {
         "en": "Maximum sustainable yield (MSY)",
-        "lt": "lith params099"
+        "lt": "Didžiausias tvarus sugavimas (MSY)"
       },
       {
         "en": "Fox",
@@ -110,15 +110,15 @@
       },
       {
         "en": "Model",
-        "lt": "model (lith)"
+        "lt": "Modelis"
       },
       {
-        "en": "MSY proportion of k",
-        "lt": "lith params6665"
+        "en": "Stock biomass to produce MSY",
+        "lt": "Populiacijos biomasė kad pasiekti MSY"
       },
       {
-        "en": "Title of the homepage",
-        "lt": "Title of the homepage (in lith)"
+        "en": "Models for sustainable inland fisheries",
+        "lt": "Tvarios žvejybos modeliai"
       }
       
       
