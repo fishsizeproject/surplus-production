@@ -28,15 +28,15 @@
       },
       {
         "en": "To see our other models",
-        "lt": "test lith"
+        "lt": "Čia galite rasti kitus mūsų sukurtus modelius"
       },
       {
         "en": "click here",
-        "lt": "click here lith"
+        "lt": "spausti čia"
       },
       {
         "en": "or to our project website",
-        "lt": "proj website here lith"
+        "lt": "arba mūsų projekto tinklapyje"
       },
       {
         "en": "Carrying capacity is the maximum biomass the system can hold, or unfished biomass level.",
@@ -59,8 +59,8 @@
         "lt": "Sugavimų mirtingumas (F) antram scenarijui"
       },
             {
-        "en": "How far the population was from carrying capacity when we started our surveys and analsyes. If surveys are started at the same time as start of fishing, set Binit to K, indicating that population was at carrying capacity and was not fished before (or at least not fished enough to have much effect on it). Remember, this is the value of exploitable biomass, not all biomass of the stock (we do not know much about juveniles and their abundance)",
-        "lt": "lith params"
+        "en": "How far the spawning stock biomass was from carrying capacity when we started our surveys.",
+        "lt": "Kiek toli subrendusių populiacijos individų biomasė skyrėsi nuo didžiausios talpos mūsų laiko eilutės pradžioje"
       },
             {
         "en": "Time (years)",
@@ -129,6 +129,38 @@
       {
         "en": "Models for sustainable inland fisheries",
         "lt": "Tvarios žvejybos modeliai"
+      },
+            {
+        "en": "Research for sustainable inland fisheries",
+        "lt": "Mokslas tvariai vidaus vandenų žvejybai"
+      },
+            {
+        "en": "The development of this app was done by Nature Research Centre (Lithuania) staff during the project “Advanced models, citizen science and big data for sustainable food production and ecological services of inland aquatic ecosystems”, funded from European Regional Development Fund (project No 01.2.2-LMT-K-718-02-0006) under grant agreement with the Research Council of Lithuania (LMTLT).",
+        "lt": "Šis modelis buvo sukurtas Gamtos tyrimų centro mokslininkų, projekto „Pažangūs modeliai, piliečių mokslas ir didieji duomenys tvariai vidaus vandenų maisto produkcijai ir ekosistemų paslaugoms“ metu (Numeris 01.2.2-LMT-K-718-02-0006). Projektas finansuotas iš Europos regioninės plėtros fondo lėšų pagal priemonės Nr. 01.2.2-LMT-K-718 veiklą “Mokslininkų iš užsienio pritraukimas vykdyti mokslinius tyrimus.”"
+      },
+      {
+        "en": "You can learn more about our other models, research, courses and engagement events on our website https://sif.lt",
+        "lt": "Daugiau apie mūsų sukurtus modelius, tyrimus, publikacijas, kursus ir kitus renginius galima sužinoti tinklapyje https://lydekaipaliepus.lt"
+      },
+            {
+        "en": "There are two main models that assume different density dependence assumptions. The basic one is Schaefer (1954, 1957), which assumes linear density dependence. Fox (1970) models assumes logarithmic density dependence, or in other words the decrease in r is logarithmically related to the increase in stock levels.",
+        "lt": "Žuvininkystės modeliuose naudojami du pagrindiniai populiacijų gausumo reguliacijos modeliai. Schaefer (1954, 1957) modelis yra konservatyviausias ir dažniausiai naudojamas, ir jis daro prielaidą kad populiacijos gausumo reguliavimo priklausybė yra linijinė (populiacijos augimo greitis mažėja linijiniu būdu augant pačiai populiacijai). Fox (1970) modelis laiko kad augimo greičio priklausybė yra logaritminė, ir kad populiacijos augimo greitis pačiai populiacijai didėjant krenta greičiau nei Schaefer modelio atveju"
+      },
+            {
+        "en": "This means that in the Schaefer assumes a symmetrical production curve, with the maximum surplus production and maximum sustainable yield (MSY) occurring at 50% of K. The Fox model assumes asymmetrical production curve with the maximum production at lower level of depletion or 37% of K. The Schaefer model therefore is more conservative than the Fox in that it requires the stock size to be higher for maximum production and generally leads to lower levels of catch for the same value of r. However, it is important to note that values of r and K are estimated inside a Schaefer or Fox model, which means that applying these two different models to same dataset would often result in different r values. For this reason the plot below shows normalised production curve, where yields are divided by the maximum possible yield.",
+        "lt": "Tai reiškia kad Schaefer modelis laiko kad produkcijos kreivė yra simetriška ir didžiausias tvarus sugavimas yra pasiekamas tada kai populiacijos biomasė yra pusė populiacijos talpos. Fox modelis laiko kad didžiausia produkcija ir sugavimai pasiekiami esant mažesniam populiacijos gausumui (37% o ne 50%). Taigi Schaefer modelis yra konservatyvesnis, todėl kad remiantis šiuo modeliu būtų siekiamas didesnis tvarus populiacijos gausumas. "
+      },
+             {
+        "en": "Visualisation",
+        "lt": "Paveikslas"
+      },
+             {
+        "en": "MSY outputs",
+        "lt": "Rezultatai"
+      },
+             {
+        "en": "Spawning stock biomass (SSB) timeseries",
+        "lt": "Subrendusios populiacijos biomasės laiko eilutė"
       }
       
       

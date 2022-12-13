@@ -69,14 +69,14 @@ my_ui <-
                             # First paragraph
                             div("Surplus production models assume that there is a biomass level (carrying capacity, K) that the stock cannot exceed. At low stock levels population growth rate is high, because there is little competition or cannibalism. At low biomass levels population growth rate is close to the maximum population growth rate, defined by the parameter r. As stock levels increase, the population growth rate slows down. When stock is at the level defined by K, population biomass does not increase anymore and growth rate is 0. Fishing removes some biomass, but population biomass increases due to its growth rate."  |> i18n$t()),
                             br(), # line break between paragraphs
-                            div(img(src = "elephant.jpg", 
+                            div(img(src = "CarryingCapacity.jpg", 
                                     width = "50%"), 
                                 align = "center"),
                             br(),
                             # Second paragraph
                             div("Population resilience and sustainable harvesting rate depends on the growth rate r. The maximum sustainable yield (MSY) will also depend on the absolute population carrying capacity K."  |> i18n$t()),
                             br(), 
-                            div(img(src = "elephant2.jpg", 
+                            div(img(src = "Barbusbarbus_s.png", 
                                     width = "50%"), 
                                 align = "center"),
                             br(),
@@ -100,8 +100,7 @@ my_ui <-
                             title = "Density dependence",
                             div("There are two main models that assume different density dependence assumptions. The basic one is Schaefer (1954, 1957), which assumes linear density dependence. Fox (1970) models assumes logarithmic density dependence, or in other words the decrease in r is logarithmically related to the increase in stock levels."  |> i18n$t()),
                             br(),
-                            div("This means that in the Schaefer assumes a symmetrical production curve, with the maximum surplus production and maximum sustainable yield (MSY) occurring at 50% of K. The Fox model assumes asymmetrical production curve with the maximum production at lower level of depletion or 37% of K. The Schaefer model therefore is more conservative than the Fox in that 
-                                    it requires the stock size to be higher for maximum production and generally leads to somewhat lower levels of catch."  |> i18n$t())
+                            div("This means that in the Schaefer assumes a symmetrical production curve, with the maximum surplus production and maximum sustainable yield (MSY) occurring at 50% of K. The Fox model assumes asymmetrical production curve with the maximum production at lower level of depletion or 37% of K. The Schaefer model therefore is more conservative than the Fox in that it requires the stock size to be higher for maximum production and generally leads to lower levels of catch for the same value of r. However, it is important to note that values of r and K are estimated inside a Schaefer or Fox model, which means that applying these two different models to same dataset would often result in different r values. For this reason the plot below shows normalised production curve, where yields are divided by the maximum possible yield."  |> i18n$t())
                         )
                     ),
                     fluidRow(
@@ -139,7 +138,7 @@ my_ui <-
                         ),
                         box(
                             width = 8,
-                            title = "Visialisation",
+                            title = "Visualisation",
                             div(
                                 # title = "hover over me2",
                                 plotOutput("densdep_plot")
@@ -182,9 +181,9 @@ my_ui <-
                 ## About page --------------------------------------------------
                 tabItem(
                     tabName = "home_tab",
-                    h3("Title of the homepage"  |> i18n$t()),
-                    p("Info about the website goes here"  |> i18n$t()),
-                    p("Para 2"  |> i18n$t()),
+                    h3("Research for sustainable inland fisheries"  |> i18n$t()),
+                    p("The development of this app was done by Nature Research Centre (Lithuania) staff during the project “Advanced models, citizen science and big data for sustainable food production and ecological services of inland aquatic ecosystems”, funded from European Regional Development Fund (project No 01.2.2-LMT-K-718-02-0006) under grant agreement with the Research Council of Lithuania (LMTLT)."  |> i18n$t()),
+                    p("You can learn more about our other models, research, courses and engagement events on our website https://sif.lt"  |> i18n$t()),
                     img(src='logos_english-removebg-preview.png', align = "center")
                     
                 )
@@ -274,7 +273,7 @@ my_server <- function(input, output, session) {
                                     value = input$spm_slider_k*0.5,
                                     step = 10),
                         "Initial Biomass (B0)" |> i18n$t(),
-                        "How far the population was from carrying capacity when we started our surveys and analsyes. If surveys are started at the same time as start of fishing, set Binit to K, indicating that population was at carrying capacity and was not fished before (or at least not fished enough to have much effect on it). Remember, this is the value of exploitable biomass,not all biomass of the stock (we do not know much about juveniles and their abundance)"  |> i18n$t())
+                        "How far the spawning stock biomass was from carrying capacity when we started our surveys."  |> i18n$t())
     })
     
     
