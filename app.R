@@ -18,7 +18,7 @@ my_ui <-
         header = dashboardHeader(
             usei18n(i18n),
             title = dashboardBrand(
-                title = "Surplus Production" |> i18n$t(),
+                title = "Surplus production" |> i18n$t(),
                 color = "primary",
                 image = "https://avatars.githubusercontent.com/u/99745785?s=400&u=eeb3a46b56826f1511e2c387374759c4c5fd109e&v=4"
             )
@@ -37,11 +37,10 @@ my_ui <-
                     icon = icon("sliders-h")
                 ),
                 menuItem(
-                    text = "Density dependence"  |> i18n$t(), 
+                    text = "Density dependence" |> i18n$t(), 
                     tabName = "densdep_tab", 
                     icon = icon("list")
                 ),
-                
                 menuItem(
                     text = "More information" |> i18n$t(),
                     tabName = "home_tab",
@@ -65,7 +64,7 @@ my_ui <-
                     fluidRow(
                         
                         box(width = 12,
-                            title = "Surplus production models",
+                            title = "Surplus production models" |> i18n$t(),
                             # First paragraph
                             div("Surplus production models assume that there is a biomass level (carrying capacity, K) that the stock cannot exceed. At low stock levels population growth rate is high, because there is little competition or cannibalism. At low biomass levels population growth rate is close to the maximum population growth rate, defined by the parameter r. As stock levels increase, the population growth rate slows down. When stock is at the level defined by K, population biomass does not increase anymore and growth rate is 0. Fishing removes some biomass, but population biomass increases due to its growth rate."  |> i18n$t()),
                             br(), # line break between paragraphs
@@ -86,7 +85,7 @@ my_ui <-
                             div("To see our other models"|> i18n$t(), 
                                 a(href = "https://fishsizeproject.github.io/models/", "click here" |> i18n$t()),
                                 "or to our project website"|> i18n$t(),
-                                a(href = "https://sif.lt", "click here" |> i18n$t()))
+                                a(href = "https://sif.lt", "click here" |> i18n$t()), ".")
                         )
                     ),
                 ),
@@ -97,7 +96,7 @@ my_ui <-
                     tabName = "densdep_tab",
                     fluidRow(
                         box(width = 12,
-                            title = "Density dependence",
+                            title = "Density dependence" |> i18n$t(),
                             div("There are two main models that assume different density dependence assumptions. The basic one is Schaefer (1954, 1957), which assumes linear density dependence. Fox (1970) models assumes logarithmic density dependence, or in other words the decrease in r is logarithmically related to the increase in stock levels."  |> i18n$t()),
                             br(),
                             div("This means that in the Schaefer assumes a symmetrical production curve, with the maximum surplus production and maximum sustainable yield (MSY) occurring at 50% of K. The Fox model assumes asymmetrical production curve with the maximum production at lower level of depletion or 37% of K. The Schaefer model therefore is more conservative than the Fox in that it requires the stock size to be higher for maximum production and generally leads to lower levels of catch for the same value of r. However, it is important to note that values of r and K are estimated inside a Schaefer or Fox model, which means that applying these two different models to same dataset would often result in different r values. For this reason the plot below shows normalised production curve, where yields are divided by the maximum possible yield."  |> i18n$t())
@@ -219,7 +218,7 @@ my_server <- function(input, output, session) {
                 title = "Carrying Capacity is the maximum biomass the system can hold."  |> i18n$t(),
                 sliderInput(
                     inputId = "spm_slider_k",
-                    label = "Carrying capacity (K):",
+                    label = "Carrying capacity (K)" |> i18n$t(),
                     min = 100,
                     max = 5000,
                     value = 1000,
@@ -230,7 +229,7 @@ my_server <- function(input, output, session) {
             tags$div(
                 title = "'r' refers to the intrinsic growth rate of the species."  |> i18n$t(),
                 sliderInput("spm_slider_r",
-                            "Growth rate (r):",
+                            "Population growth rate (r)" |> i18n$t(),
                             min = 0.05,
                             max = 0.95, 
                             value = 0.3, 

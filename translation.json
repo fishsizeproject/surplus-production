@@ -4,8 +4,12 @@
   "translation": [
       {"en": "Introduction", "lt": "Įvadas"},
       {
-        "en": "Surplus Production",
+        "en": "Surplus production models",
         "lt": "Pridėtinės produkcijos modelis"
+      },
+      {
+        "en": "Surplus production",
+        "lt": "Pridėtinės produkcijos"
       },
       {
         "en": "Parameters",
@@ -133,6 +137,22 @@
             {
         "en": "Research for sustainable inland fisheries",
         "lt": "Mokslas tvariai vidaus vandenų žvejybai"
+      },
+      {
+        "en": "Density dependence",
+        "lt": "Density dependence"
+      },
+      {
+        "en": "About SPM's",
+        "lt": "About SPM's"
+      },
+      {
+        "en": "More information",
+        "lt": "More information"
+      },
+      {
+        "en": "MSY proportion of K",
+        "lt": "MSY proportion of K"
       },
             {
         "en": "The development of this app was done by Nature Research Centre (Lithuania) staff during the project “Advanced models, citizen science and big data for sustainable food production and ecological services of inland aquatic ecosystems”, funded from European Regional Development Fund (project No 01.2.2-LMT-K-718-02-0006) under grant agreement with the Research Council of Lithuania (LMTLT).",
