@@ -16,7 +16,7 @@ i18n$set_translation_language("en")
 my_ui <-
     dashboardPage(
         header = dashboardHeader(
-            titleWidth = 500,
+            titleWidth = 900,
             usei18n(i18n),
             title = dashboardBrand(
                 title = "Surplus production" |> i18n$t(),
