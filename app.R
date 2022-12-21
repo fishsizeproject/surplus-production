@@ -16,6 +16,7 @@ i18n$set_translation_language("en")
 my_ui <-
     dashboardPage(
         header = dashboardHeader(
+            titleWidth = 500,
             usei18n(i18n),
             title = dashboardBrand(
                 title = "Surplus production" |> i18n$t(),
@@ -121,7 +122,7 @@ my_ui <-
                                 div(
                                     # title = "hover over m2e"  |> i18n$t(),
                                     sliderInput("densdep_r", 
-                                                "Growth rate (r)"|> i18n$t(),
+                                                "Population growth rate (r)" |> i18n$t(),
                                                 min = 0.05, 
                                                 max = 1, 
                                                 value = 0.3, 
@@ -215,7 +216,7 @@ my_server <- function(input, output, session) {
         
         list(
             tags$div(
-                title = "Carrying Capacity is the maximum biomass the system can hold."  |> i18n$t(),
+                title = "Carrying capacity is the maximum biomass the system can hold, or unfished biomass level."  |> i18n$t(),
                 sliderInput(
                     inputId = "spm_slider_k",
                     label = "Carrying capacity (K)" |> i18n$t(),
@@ -227,7 +228,7 @@ my_server <- function(input, output, session) {
             ),
             
             tags$div(
-                title = "'r' refers to the intrinsic growth rate of the species."  |> i18n$t(),
+                title = "r refers to the intrinsic maximum population growth rate"  |> i18n$t(),
                 sliderInput("spm_slider_r",
                             "Population growth rate (r)" |> i18n$t(),
                             min = 0.05,
@@ -237,7 +238,7 @@ my_server <- function(input, output, session) {
             ),
             
             tags$div(
-                title = "The biomass when time = zero"  |> i18n$t(),
+                title = "Initial biomass (when time = 0)"  |> i18n$t(),
                 uiOutput("spm_binit_slider"),
             ),
             
@@ -271,7 +272,7 @@ my_server <- function(input, output, session) {
                                     max = input$spm_slider_k,
                                     value = input$spm_slider_k*0.5,
                                     step = 10),
-                        "Initial Biomass (B0)" |> i18n$t(),
+                        "Initial biomass (when time = 0)" |> i18n$t(),
                         "How far the spawning stock biomass was from carrying capacity when we started our surveys."  |> i18n$t())
     })
     
@@ -316,13 +317,13 @@ my_server <- function(input, output, session) {
             tibble(t = 1:length(Bio), 
                    biomass = Bio |> as.numeric(), 
                    catch = Cat  |> as.numeric(), 
-                   f_mortality_biomass = paste0("Biomass (#1: " |> i18n$t(), u_m1, ")"),
-                   f_mortality_yield = paste0("Yield (#1: " |> i18n$t(), u_m1, ")")) %>% 
+                   f_mortality_biomass = paste0("Biomass"|> i18n$t(), "(#1: ", u_m1, ")"),
+                   f_mortality_yield = paste0("Yield" |> i18n$t(), "(#1: ", u_m1, ")")) %>% 
             bind_rows(tibble(t = 1:length(Bio2), 
                              biomass = Bio2 |> as.numeric(), 
                              catch = Cat2 |> as.numeric(), 
-                             f_mortality_biomass = paste0("Biomass (#2: " |> i18n$t(), u_m1, ")"),
-                             f_mortality_yield = paste0("Yield (#2: " |> i18n$t(), u_m1, ")"))) 
+                             f_mortality_biomass = paste0("Biomass"|> i18n$t(), "(#2: ", u_m1, ")"),
+                             f_mortality_yield = paste0("Yield" |> i18n$t(), "(#2: " , u_m1, ")"))) 
         
         tab1 |>
             plot_ly(x = ~t, 
@@ -335,7 +336,7 @@ my_server <- function(input, output, session) {
             layout(title = '', 
                    plot_bgcolor = "transparent", 
                    xaxis = list(title = 'Time (years)' |> i18n$t(), hoverformat = '1f'), 
-                   yaxis = list(title = 'Biomass (Tonnes)'  |> i18n$t(), hoverformat = '.1f'), 
+                   yaxis = list(title = 'Biomass (tonnes)'  |> i18n$t(), hoverformat = '.1f'), 
                    legend = list(title=list(text='Scenario'  |> i18n$t())))
         
         # 
@@ -390,7 +391,7 @@ my_server <- function(input, output, session) {
         names(mycols) <- c("Fox" |> i18n$t(), 
                            "Schaefer" |> i18n$t())
         
-        transmod <- "Model" %>% rlang::sym() %>% as.character()
+        transmod <- "Model" |> i18n$t() %>% rlang::sym() 
         
         tibble(Bt, 
                sp = sp0 * (max(sp)/max(sp0)), 
@@ -400,8 +401,8 @@ my_server <- function(input, output, session) {
                              Model = "Schaefer" |> i18n$t())) %>% 
             rename(!!transmod := Model) %>% 
             ggplot(aes(x = Bt, 
-                       y = sp)) + 
-            aes_string(colour = as.character(transmod)) +
+                       y = sp,
+                       colour := !!transmod)) + 
             geom_line(linewidth = 2) +
             theme_bw(24) +
             # xlim(0, 3000) +

@@ -74,6 +74,10 @@
         "en": "Yield (tonnes)",
         "lt": "Sugavimai (tonos)"
       },
+      {
+        "en": "Yield",
+        "lt": "Sugavimai"
+      },
         {
         "en": "Stock biomass (tonnes)",
         "lt": "Populiacijos biomasė (tonos)"
@@ -89,6 +93,10 @@
             {
         "en": "Biomass (tonnes)",
         "lt": "Biomasė (tonos)"
+      },
+      {
+        "en": "Biomass",
+        "lt": "Biomasė"
       },
             {
         "en": "Initial stock biomass (B\u2080):",

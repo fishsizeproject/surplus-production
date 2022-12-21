@@ -5,9 +5,9 @@ account: fishsize
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 7806485
-bundleId: 6621418
+bundleId: 6659675
 url: https://fishsize.shinyapps.io/surplus-production/
-when: 1670713839.20014
-lastSyncTime: 1670713839.20015
+when: 1671586951.27454
+lastSyncTime: 1671586951.27456
 asMultiple: FALSE
 asStatic: FALSE
