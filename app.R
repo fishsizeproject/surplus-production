@@ -57,6 +57,7 @@ my_ui <-
         ),
         body = dashboardBody(
             usei18n(i18n),
+            tags$head(tags$style("p {font-size: 18px}")),
             tabItems(
                 
                 ## About surplus production ------------------------------------
@@ -64,26 +65,28 @@ my_ui <-
                     tabName = "aboutspms_tab",
                     fluidRow(
                         
-                        box(width = 12,
-                            title = "Surplus production models" |> i18n$t(),
+                        div(
+                            # width = 12,
+                            # title = "Surplus production models" |> i18n$t(),
+                            h1("Surplus production models" |> i18n$t()),
                             # First paragraph
-                            div("Surplus production models assume that there is a biomass level (carrying capacity, K) that the stock cannot exceed. At low stock levels population growth rate is high, because there is little competition or cannibalism. At low biomass levels population growth rate is close to the maximum population growth rate, defined by the parameter r. As stock levels increase, the population growth rate slows down. When stock is at the level defined by K, population biomass does not increase anymore and growth rate is 0. Fishing removes some biomass, but population biomass increases due to its growth rate."  |> i18n$t()),
+                            p("Surplus production models assume that there is a biomass level (carrying capacity, K) that the stock cannot exceed. At low stock levels population growth rate is high, because there is little competition or cannibalism. At low biomass levels population growth rate is close to the maximum population growth rate, defined by the parameter r. As stock levels increase, the population growth rate slows down. When stock is at the level defined by K, population biomass does not increase anymore and growth rate is 0. Fishing removes some biomass, but population biomass increases due to its growth rate."  |> i18n$t()),
                             br(), # line break between paragraphs
                             div(img(src = "CarryingCapacity.jpg", 
                                     width = "50%"), 
                                 align = "center"),
                             br(),
                             # Second paragraph
-                            div("Population resilience and sustainable harvesting rate depends on the growth rate r. The maximum sustainable yield (MSY) will also depend on the absolute population carrying capacity K."  |> i18n$t()),
+                            p("Population resilience and sustainable harvesting rate depends on the growth rate r. The maximum sustainable yield (MSY) will also depend on the absolute population carrying capacity K."  |> i18n$t()),
                             br(), 
                             div(img(src = "Barbusbarbus_s.png", 
                                     width = "50%"), 
                                 align = "center"),
                             br(),
                             # Third paragraph
-                            div("In the next tab you can explore how population biomass and yield will change depending on the fishing mortality level under the most common assumption that maximum sustainable yield is achieved when population biomass is at 50% of its maximum or unfished level (K). This is the Schaefer model. In this model the equilibrium maximum fishing mortality which leads to MSY is equal to half of population regeneration rate r. You can play with different r and fishing mortality F values and see how higher fishing mortality may lead to lower long-term yields. Also explore how similar yields can be achived at very different stock biomass levels. Ideally we want to maximise both the yields and the spawning stock biomass, as this will lead to a more resilient population. Remember, maximum sustainble yield (MSY) is the MAXIMUM recommended yield and not the target yield. Due to many uncertainties and environmental impacts the actual yield should be lower."  |> i18n$t()),
+                            p("In the next tab you can explore how population biomass and yield will change depending on the fishing mortality level under the most common assumption that maximum sustainable yield is achieved when population biomass is at 50% of its maximum or unfished level (K). This is the Schaefer model. In this model the equilibrium maximum fishing mortality which leads to MSY is equal to half of population regeneration rate r. You can play with different r and fishing mortality F values and see how higher fishing mortality may lead to lower long-term yields. Also explore how similar yields can be achived at very different stock biomass levels. Ideally we want to maximise both the yields and the spawning stock biomass, as this will lead to a more resilient population. Remember, maximum sustainble yield (MSY) is the MAXIMUM recommended yield and not the target yield. Due to many uncertainties and environmental impacts the actual yield should be lower."  |> i18n$t()),
                             br(),
-                            div("To see our other models"|> i18n$t(), 
+                            p("To see our other models"|> i18n$t(), 
                                 a(href = "https://fishsizeproject.github.io/models/", "click here" |> i18n$t()),
                                 "or to our project website"|> i18n$t(),
                                 a(href = "https://sif.lt", "click here" |> i18n$t()), ".")
@@ -98,9 +101,9 @@ my_ui <-
                     fluidRow(
                         box(width = 12,
                             title = "Density dependence" |> i18n$t(),
-                            div("There are two main models that assume different density dependence assumptions. The basic one is Schaefer (1954, 1957), which assumes linear density dependence. Fox (1970) models assumes logarithmic density dependence, or in other words the decrease in r is logarithmically related to the increase in stock levels."  |> i18n$t()),
+                            p("There are two main models that assume different density dependence assumptions. The basic one is Schaefer (1954, 1957), which assumes linear density dependence. Fox (1970) models assumes logarithmic density dependence, or in other words the decrease in r is logarithmically related to the increase in stock levels."  |> i18n$t()),
                             br(),
-                            div("This means that in the Schaefer assumes a symmetrical production curve, with the maximum surplus production and maximum sustainable yield (MSY) occurring at 50% of K. The Fox model assumes asymmetrical production curve with the maximum production at lower level of depletion or 37% of K. The Schaefer model therefore is more conservative than the Fox in that it requires the stock size to be higher for maximum production and generally leads to lower levels of catch for the same value of r. However, it is important to note that values of r and K are estimated inside a Schaefer or Fox model, which means that applying these two different models to same dataset would often result in different r values. For this reason the plot below shows normalised production curve, where yields are divided by the maximum possible yield."  |> i18n$t())
+                            p("This means that in the Schaefer assumes a symmetrical production curve, with the maximum surplus production and maximum sustainable yield (MSY) occurring at 50% of K. The Fox model assumes asymmetrical production curve with the maximum production at lower level of depletion or 37% of K. The Schaefer model therefore is more conservative than the Fox in that it requires the stock size to be higher for maximum production and generally leads to lower levels of catch for the same value of r. However, it is important to note that values of r and K are estimated inside a Schaefer or Fox model, which means that applying these two different models to same dataset would often result in different r values. For this reason the plot below shows normalised production curve, where yields are divided by the maximum possible yield."  |> i18n$t())
                         )
                     ),
                     fluidRow(
@@ -181,7 +184,7 @@ my_ui <-
                 ## About page --------------------------------------------------
                 tabItem(
                     tabName = "home_tab",
-                    h3("Research for sustainable inland fisheries"  |> i18n$t()),
+                    h1("Research for sustainable inland fisheries"  |> i18n$t()),
                     p("The development of this app was done by Nature Research Centre (Lithuania) staff during the project “Advanced models, citizen science and big data for sustainable food production and ecological services of inland aquatic ecosystems”, funded from European Regional Development Fund (project No 01.2.2-LMT-K-718-02-0006) under grant agreement with the Research Council of Lithuania (LMTLT)."  |> i18n$t()),
                     p("You can learn more about our other models, research, courses and engagement events on our website https://sif.lt"  |> i18n$t()),
                     img(src='logos_english-removebg-preview.png', align = "center")
